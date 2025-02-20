@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Performance Dashboard</title>
+</head>
+<body>
+    <h1>Performance Dashboard</h1>
+    
+    <form method="POST">
+        <label for="athlete">Athlete:</label>
+        <select name="athlete">
+            {% for name in athletes %}
+                <option value="{{ name }}">{{ name }}</option>
+            {% endfor %}
+        </select>
+
+        <label for="var1">Variable 1:</label>
+        <select name="var1">
+            {% for var in variables %}
+                <option value="{{ var }}">{{ var }}</option>
+            {% endfor %}
+        </select>
+
+        <label for="var2">Variable 2:</label>
+        <select name="var2">
+            {% for var in variables %}
+                <option value="{{ var }}">{{ var }}</option>
+            {% endfor %}
+        </select>
+
+        <label for="start_date">Start Date:</label>
+        <input type="date" name="start_date" value="{{ request.form.get('start_date', '') }}">
+
+        <label for="end_date">End Date:</label>
+        <input type="date" name="end_date" value="{{ request.form.get('end_date', '') }}">
+
+        <button type="submit">Update Graph</button>
+    </form>
+
+    <div>{{ plot_html | safe }}</div>
+</body>
+</html>
