@@ -23,7 +23,6 @@ if not zip_files:
     print("❌ No ZIP files found in 'csv_files/'. Please check the folder.")
 else:
     print(f"🗂 Found {len(zip_files)} ZIP files. Extracting all CSVs...")
-
     for zip_file in zip_files:
         try:
             with zipfile.ZipFile(zip_file, "r") as zip_ref:
